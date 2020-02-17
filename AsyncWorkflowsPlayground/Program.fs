@@ -1,5 +1,7 @@
 ﻿open System
 
+let (|Over10|_|) id = if id > 10 then Some Over10 else None
+
 let getName (id : int) =
     async {
         Console.WriteLine(@"""GetName"" gets executed")
@@ -12,10 +14,9 @@ let getName (id : int) =
 let printNameOver10 id (name : Async<string>) =
     async {
         match id with
-        | x when x > 10 ->
-            let! nameValue = name
-            Console.WriteLine(nameValue)
-
+        | Over10 ->
+            let! value = name
+            Console.WriteLine(value)
         | _ ->
             Console.WriteLine("under 10")
     }
