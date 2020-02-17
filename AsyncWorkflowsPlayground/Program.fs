@@ -1,6 +1,6 @@
 ﻿open System
 
-let (|Over10|_|) id = if id > 10 then Some Over10 else None
+let (|Over10|UpTo10|) id = if id > 10 then Over10 else UpTo10
 
 let getName (id : int) =
     async {
@@ -17,7 +17,7 @@ let printNameOver10 id (name : Async<string>) =
         | Over10 ->
             let! value = name
             Console.WriteLine(value)
-        | _ ->
+        | UpTo10 ->
             Console.WriteLine("under 10")
     }
 
