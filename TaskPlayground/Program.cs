@@ -9,50 +9,22 @@ namespace TaskPlayground
     class Program
     {
         #region Unoptimized
-        //
-        // static async Task Main(string[] args)
-        // {
-        //     var id = Convert.ToInt32(args.Single());
-        //     var name = await GetName(id);
-        //     PrintNameOver10(
-        //         id,
-        //         name);
-        // }
-        //
-        // static void PrintNameOver10(
-        //     int id,
-        //     string name)
-        // {
-        //     if (id > 10)
-        //     {
-        //         Console.WriteLine(name);
-        //     }
-        //     else
-        //     {
-        //         Console.WriteLine("under 10");
-        //     }
-        // }
-        
-        #endregion
-        
-        #region Just defer the task execution, stupid!
-        
+
         static async Task Main(string[] args)
         {
             var id = Convert.ToInt32(args.Single());
-            var nameTask = GetName(id);
-            await PrintNameOver10(
+            var name = await GetName(id);
+            PrintNameOver10(
                 id,
-                nameTask);
+                name);
         }
 
-        static async Task PrintNameOver10(
+        static void PrintNameOver10(
             int id,
-            Task<string> nameTask)
+            string name)
         {
             if (id > 10)
             {
-                var name = await nameTask;
                 Console.WriteLine(name);
             }
             else
@@ -60,6 +32,34 @@ namespace TaskPlayground
                 Console.WriteLine("under 10");
             }
         }
+        
+        #endregion
+        
+        #region Just defer the task execution, stupid!
+        
+        // static async Task Main(string[] args)
+        // {
+        //     var id = Convert.ToInt32(args.Single());
+        //     var nameTask = GetName(id);
+        //     await PrintNameOver10(
+        //         id,
+        //         nameTask);
+        // }
+        //
+        // static async Task PrintNameOver10(
+        //     int id,
+        //     Task<string> nameTask)
+        // {
+        //     if (id > 10)
+        //     {
+        //         var name = await nameTask;
+        //         Console.WriteLine(name);
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("under 10");
+        //     }
+        // }
         
         #endregion
 
