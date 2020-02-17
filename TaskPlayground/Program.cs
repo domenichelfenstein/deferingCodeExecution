@@ -12,7 +12,7 @@ namespace TaskPlayground
 
         static async Task Main(string[] args)
         {
-            var id = Convert.ToInt32(args.Single());
+            const int id = 10;
             var name = await GetName(id);
             PrintNameOver10(
                 id,
