@@ -9,7 +9,7 @@ namespace TaskPlayground
     class Program
     {
         #region Unoptimized
-        
+
         static async Task Main(string[] args)
         {
             var id = Convert.ToInt32(args.Single());
@@ -18,7 +18,7 @@ namespace TaskPlayground
                 id,
                 name);
         }
-        
+
         static void PrintNameOver10(
             int id,
             string name)
