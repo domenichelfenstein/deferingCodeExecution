@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskPlayground", "TaskPlayground\TaskPlayground.csproj", "{698F4049-7370-475B-A5CC-784F2851C7D5}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AsyncWorkflowsPlayground", "AsyncWorkflowsPlayground\AsyncWorkflowsPlayground.fsproj", "{4CFDB64F-75A7-49E6-89B2-1D51EEA69F0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{698F4049-7370-475B-A5CC-784F2851C7D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{698F4049-7370-475B-A5CC-784F2851C7D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{698F4049-7370-475B-A5CC-784F2851C7D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CFDB64F-75A7-49E6-89B2-1D51EEA69F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFDB64F-75A7-49E6-89B2-1D51EEA69F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CFDB64F-75A7-49E6-89B2-1D51EEA69F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CFDB64F-75A7-49E6-89B2-1D51EEA69F0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
