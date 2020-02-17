@@ -1,11 +1,10 @@
 ﻿open System
-open System.Threading.Tasks
 
 let getName (id : int) =
     async {
         Console.WriteLine(@"""GetName"" gets executed")
 
-        Task.Delay(500) |> Async.AwaitTask |> ignore
+        do! Async.Sleep 500
 
         return "Hans Maulwurf (id: " + id.ToString() + ")"
     }
