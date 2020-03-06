@@ -11,21 +11,35 @@ let getName (id : int) =
         return "Hans Maulwurf (id: " + id.ToString() + ")"
     }
 
-let printNameOver10 id (name : Lazy<string>) =
-    match id with
-        | Over10 ->
-            let value = name.Force()
-            Console.WriteLine(value)
-        | UpTo10 ->
-            Console.WriteLine("under 10")
+let printNameOver10 id (name : Lazy<Async<string>>) =
+    async {
+        match id with
+            | Over10 ->
+                let! value = name.Force()
+                Console.WriteLine(value)
+            | UpTo10 ->
+                Console.WriteLine("under 10")
+    }
+    
+let replay task =
+    let mutable memorizedValue = null
+    match memorizedValue with
+        | null ->
+            async {
+                let! result = task
+                memorizedValue <- result
+                return result
+            }
+        | _ -> async { return memorizedValue }
 
 [<EntryPoint>]
 let main argv =
-    let id = 10
-    let nameAsync = getName id
-    let name = lazy(nameAsync |> Async.RunSynchronously);
+    async {
+        let id = 20
+        let name = lazy(getName id |> replay)
 
-//    let n = name.Force()    // comment in to show that getName is executed only once
+        let! n = name.Force()    // comment in to show that getName is executed only once
 
-    printNameOver10 id name
+        do! printNameOver10 id name
+    } |> Async.RunSynchronously
     0
