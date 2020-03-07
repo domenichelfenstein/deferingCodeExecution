@@ -1,13 +1,18 @@
 ﻿open AsyncLib
 open System
+open System.Threading.Tasks
 
 let (|Over10|UpTo10|) id = if id > 10 then Over10 else UpTo10
+let delayTask ms =
+    Task.Delay(TimeSpan.FromMilliseconds ms)
 
 let getName (id : int) =
     async {
         Console.WriteLine(@"""GetName"" gets executed")
 
-        do! Async.Sleep 500
+        // only here to demonstrate interoperability
+        // would normally just call Async.Sleep
+        do! Async.AwaitTask (delayTask 500.)
 
         return "Hans Maulwurf (id: " + id.ToString() + ")"
     }
@@ -28,7 +33,7 @@ let main argv =
         let id = 20
         let name = getName id |> replay
 
-//        let! n = name.Force()    // comment in to show that getName is executed only once
+//        let! n = name   // comment in to show that getName is executed only once
 
         do! printNameOver10 id name
     } |> Async.RunSynchronously

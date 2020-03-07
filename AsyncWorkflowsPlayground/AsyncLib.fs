@@ -1,4 +1,5 @@
 module AsyncLib
+    open System
     open System.Threading
     open System.Threading.Tasks
 
@@ -14,4 +15,8 @@ module AsyncLib
                tcs.SetException, 
                (fun _ -> tcs.SetCanceled()))
            return! tcs.Task |> Async.AwaitTask }
+          
+    // sample for .Net Task function
+    let delayTask ms =
+        Task.Delay(TimeSpan.FromMilliseconds ms)
 
